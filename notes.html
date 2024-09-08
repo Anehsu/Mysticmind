@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Science Notes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: plum;
+            margin: 20px;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color: #00796b;
+        }
+        select {
+            padding: 10px;
+            width: 220px;
+            border: 2px solid #00796b;
+            border-radius: 5px;
+            background-color: #ffffff;
+            color: #00796b;
+            font-size: 16px;
+        }
+        select:hover {
+            background-color: #b2dfdb;
+        }
+        .note {
+            background-color: #ffffff;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .note:hover {
+            background-color: #f1f8e9;
+            transform: scale(1.02);
+        }
+        .section-title {
+            font-weight: bold;
+            margin-top: 10px;
+            color: #00796b;
+        }
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            color: #004d40;
+        }
+        p {
+            line-height: 1.6;
+        }
+        .content-container {
+            padding: 10px;
+            background-color: #ffffff;
+            border-left: 5px solid #00796b;
+        }
+        section{
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Mysticmind.school High school notes<h1>
+        <nav>
+            
+                <a href="https://mysticmind.mystrikingly.com/">Home</a>
+               
+        </nav>
+    </header>
+    <section style="background-color: peachpuff;">
+    <label for="topic-select">Choose a subject:</label>
+    <select id="topic-select" onchange="showNotes()">
+        <option value="">--Select a topic--</option>
+        <option value="physics">Physics</option>
+        <option value="chemistry">Chemistry</option>
+        <option value="biology">Biology</option>
+    </select>
+</section>
+    <div id="note-display" class="note" style="display: none;">
+        <h3 id="topic-title"></h3>
+        <div id="topic-content" class="content-container"></div>
+    </div>
+
+    <script>
+        const notes = {
+            physics: {
+                title: "Physics",
+                content: `
+                    <div>
+                        <div class="section-title">Introduction:</div>
+                        <p>Physics is the branch of science that studies the nature and properties of matter and energy. It covers a vast range of phenomena, from subatomic particles to the behavior of the universe itself.</p>
+                        
+                        <div class="section-title">Key Concepts:</div>
+                        <ul>
+                            <li><strong>Classical Mechanics:</strong> Describes the motion of macroscopic objects, governed by Newton's laws of motion. Topics include force, motion, gravity, and energy conservation.</li>
+                            <li><strong>Electromagnetism:</strong> The study of electric and magnetic fields, including how they interact. Key topics include electric circuits, magnetism, and electromagnetic radiation.</li>
+                            <li><strong>Thermodynamics:</strong> Focuses on the relationships between heat, work, temperature, and energy. Important laws include the laws of thermodynamics and concepts like entropy.</li>
+                            <li><strong>Quantum Mechanics:</strong> Describes the behavior of particles at the atomic and subatomic levels. Key concepts include wave-particle duality, the uncertainty principle, and quantum states.</li>
+                            <li><strong>Relativity:</strong> Einstein's theory of relativity redefined our understanding of space, time, and gravity. The two main components are special relativity and general relativity.</li>
+                        </ul>
+
+                        <div class="section-title">Subfields of Physics:</div>
+                        <ul>
+                            <li><strong>Astrophysics:</strong> The study of the universe, including stars, galaxies, black holes, and cosmology.</li>
+                            <li><strong>Particle Physics:</strong> The study of the fundamental particles of the universe, such as quarks, leptons, and bosons.</li>
+                            <li><strong>Condensed Matter Physics:</strong> Focuses on the properties of solid and liquid matter, including semiconductors and superconductors.</li>
+                            <li><strong>Nuclear Physics:</strong> The study of atomic nuclei, nuclear reactions, and radioactive decay.</li>
+                        </ul>
+
+                        <div class="section-title">Real-World Applications:</div>
+                        <p>Physics has revolutionized our understanding of the universe and has practical applications in various fields:</p>
+                        <ul>
+                            <li><strong>Medical Imaging:</strong> Technologies such as MRI, X-rays, and PET scans are based on principles of electromagnetism and nuclear physics.</li>
+                            <li><strong>Electronics:</strong> Semiconductors and transistors, which are the backbone of modern electronics, rely on the principles of quantum mechanics.</li>
+                            <li><strong>Renewable Energy:</strong> Understanding thermodynamics and energy transfer is crucial for the development of solar panels, wind turbines, and other renewable energy technologies.</li>
+                            <li><strong>Space Exploration:</strong> Concepts from astrophysics and mechanics are essential for launching spacecraft and understanding the cosmos.</li>
+                        </ul>
+                    </div>
+                `
+            },
+            chemistry: {
+                title: "Chemistry",
+                content: `
+                    <div>
+                        <div class="section-title">Introduction:</div>
+                        <p>Chemistry is the study of substances and the changes they undergo. It involves understanding the composition, structure, and properties of matter, as well as the reactions that transform one substance into another.</p>
+                        
+                        <div class="section-title">Key Concepts:</div>
+                        <ul>
+                            <li><strong>The Periodic Table:</strong> A chart that organizes elements by increasing atomic number and groups them based on similar chemical properties. Understanding the periodic trends helps predict element behavior.</li>
+                            <li><strong>Chemical Bonds:</strong> Atoms bond together to form molecules through ionic, covalent, and metallic bonds. This determines the structure and properties of the resulting compounds.</li>
+                            <li><strong>Reactions and Stoichiometry:</strong> Chemical reactions involve the transformation of reactants into products. Stoichiometry allows us to calculate the quantities of substances involved in reactions.</li>
+                            <li><strong>Acid-Base Chemistry:</strong> Acids and bases are substances that can donate or accept protons, respectively. The pH scale measures the acidity or alkalinity of a solution.</li>
+                            <li><strong>Thermochemistry:</strong> This branch of chemistry deals with the heat involved in chemical processes, including exothermic and endothermic reactions.</li>
+                        </ul>
+
+                        <div class="section-title">Subfields of Chemistry:</div>
+                        <ul>
+                            <li><strong>Organic Chemistry:</strong> The study of carbon-based compounds, including the structure, properties, and reactions of molecules like hydrocarbons, alcohols, and polymers.</li>
+                            <li><strong>Inorganic Chemistry:</strong> Focuses on compounds that do not contain carbon, including metals, salts, and minerals.</li>
+                            <li><strong>Biochemistry:</strong> The study of chemical processes within living organisms, including enzymes, DNA, and metabolic pathways.</li>
+                            <li><strong>Physical Chemistry:</strong> Combines chemistry with physics to study the behavior of matter, including quantum chemistry and kinetics.</li>
+                        </ul>
+
+                        <div class="section-title">Real-World Applications:</div>
+                        <p>Chemistry has a broad range of applications that impact everyday life and industries:</p>
+                        <ul>
+                            <li><strong>Pharmaceuticals:</strong> Chemistry is essential in drug development, understanding how molecules interact with biological systems to create effective treatments.</li>
+                            <li><strong>Food Science:</strong> Chemistry is involved in the production and preservation of food, including understanding chemical reactions that occur during cooking and digestion.</li>
+                            <li><strong>Environmental Science:</strong> Chemistry helps us understand and combat pollution, analyze water quality, and develop sustainable materials and energy sources.</li>
+                            <li><strong>Materials Science:</strong> Chemistry is key in developing new materials, from synthetic plastics and fibers to advanced ceramics and nanomaterials.</li>
+                        </ul>
+                    </div>
+                `
+            },
+            biology: {
+                title: "Biology",
+                content: `
+                    <div>
+                        <div class="section-title">Introduction:</div>
+                        <p>Biology is the study of life and living organisms, including their physical structure, chemical processes, molecular interactions, development, and evolution. It encompasses the study of all life forms, from single-celled organisms to complex multicellular organisms.</p>
+                        
+                        <div class="section-title">Key Concepts:</div>
+                        <ul>
+                            <li><strong>Cell Theory:</strong> All living organisms are composed of cells, which are the basic units of life. Cells carry out essential functions like energy production, growth, and reproduction.</li>
+                            <li><strong>Genetics:</strong> The study of heredity and variation in living organisms. DNA is the molecule that carries genetic information, and genes determine the traits of organisms.</li>
+                            <li><strong>Evolution:</strong> The process by which populations of organisms change over time through natural selection, genetic drift, and mutations.</li>
+                            <li><strong>Ecology:</strong> The study of the relationships between organisms and their environment, including ecosystems, populations, and food chains.</li>
+                        </ul>
+
+                        <div class="section-title">Subfields of Biology:</div>
+                        <ul>
+                            <li><strong>Zoology:</strong> The study of animals, their behavior, anatomy, and physiology.</li>
+                            <li><strong>Botany:</strong> The study of plants, including their structure, growth, and reproduction.</li>
+                            <li><strong>Microbiology:</strong> The study of microorganisms, such as bacteria, viruses, and fungi.</li>
+                            <li><strong>Genomics:</strong> The study of genomes, the complete set of DNA in an organism, including gene sequencing and bioinformatics.</li>
+                        </ul>
+
+                        <div class="section-title">Real-World Applications:</div>
+                        <p>Biology plays a critical role in many areas of science, technology, and medicine:</p>
+                        <ul>
+                            <li><strong>Medicine:</strong> Understanding biology is essential for diagnosing and treating diseases, developing vaccines, and creating new therapies, such as gene therapy and regenerative medicine.</li>
+                            <li><strong>Biotechnology:</strong> Biology is the foundation of biotechnological advances, including genetic engineering, cloning, and the production of biofuels.</li>
+                            <li><strong>Agriculture:</strong> Biology helps improve crop yields, develop pest-resistant plants, and create more sustainable farming practices.</li>
+                            <li><strong>Conservation:</strong> Biology informs efforts to preserve endangered species, restore habitats, and maintain biodiversity.</li>
+                        </ul>
+                    </div>
+                `
+            }
+        };
+
+        function showNotes() {
+            const topicSelect = document.getElementById("topic-select");
+            const noteDisplay = document.getElementById("note-display");
+            const topicTitle = document.getElementById("topic-title");
+            const topicContent = document.getElementById("topic-content");
+
+            const selectedTopic = topicSelect.value;
+
+            if (selectedTopic && notes[selectedTopic]) {
+                topicTitle.textContent = notes[selectedTopic].title;
+                topicContent.innerHTML = notes[selectedTopic].content;
+                noteDisplay.style.display = 'block';
+            } else {
+                noteDisplay.style.display = 'none';
+            }
+        }
+    </script>
+
+</body>
+</html>

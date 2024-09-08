@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primary School Notes</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background-color: peachpuff;
+            margin: 20px;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color: #ff5722;
+        }
+        select {
+            padding: 10px;
+            width: 220px;
+            border: 2px solid #ff5722;
+            border-radius: 5px;
+            background-color: #ffffff;
+            color: #ff5722;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        select:hover {
+            background-color: #ffe0b2;
+        }
+        .note {
+            background-color: #ffffff;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .section-title {
+            font-weight: bold;
+            margin-top: 10px;
+            color: #ff5722;
+        }
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            color: #4caf50;
+        }
+        p {
+            line-height: 1.6;
+        }
+        .content-container {
+            padding: 10px;
+            background-color: #ffffff;
+            border-left: 5px solid #ff5722;
+        }
+        section{
+            background-color: plum;
+            padding: 10px;
+        }
+        header{
+            text-align: center;
+            font-size: large;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Thesticmind.school Middle School Notes</h1>
+        <nav>
+            <ul>
+                <li><a href="https://mysticmind.mystrikingly.com/">Home</a></li>
+               
+            </ul>
+        </nav>
+    </header>
+    
+<section>
+    <label for="topic-select">Choose a subject:</label>
+    <select id="topic-select" onchange="showNotes()">
+        <option value="">--Select a topic--</option>
+        <option value="science">Science</option>
+        <option value="mathematics">Mathematics</option>
+    </select>
+</section>
+    <div id="note-display" class="note" style="display: none;">
+        <h3 id="topic-title"></h3>
+        <div id="topic-content" class="content-container"></div>
+    </div>
+
+    <script>
+        const notes = {
+            science: {
+                title: "Science",
+                content: `
+                    <div>
+                        <div class="section-title">Introduction:</div>
+                        <p>Science is all about learning how the world around us works. We study different things like plants, animals, and the weather to understand our environment better.</p>
+                        
+                        <div class="section-title">Key Topics:</div>
+                        <ul>
+                            <li><strong>Plants:</strong> Plants need sunlight, water, and air to grow. They have different parts like roots, stems, leaves, and flowers.</li>
+                            <li><strong>Animals:</strong> Animals come in many shapes and sizes. Some live in the water, some on land, and some can fly!</li>
+                            <li><strong>The Weather:</strong> Weather includes things like rain, sunshine, wind, and snow. We use weather forecasts to know what the weather will be like each day.</li>
+                            <li><strong>The Earth:</strong> Our planet Earth is made up of land, water, and air. It's important to take care of it by keeping it clean and recycling.</li>
+                        </ul>
+
+                        <div class="section-title">Fun Facts:</div>
+                        <ul>
+                            <li>Some plants can grow very tall, like redwood trees in California!</li>
+                            <li>There are more than 8 million different species of animals on Earth.</li>
+                            <li>Rainbows are made when sunlight shines through raindrops and splits into different colors.</li>
+                        </ul>
+                    </div>
+                `
+            },
+            mathematics: {
+                title: "Mathematics",
+                content: `
+                    <div>
+                        <div class="section-title">Introduction:</div>
+                        <p>Mathematics helps us understand and solve problems. We use math in our daily lives for things like counting, measuring, and comparing.</p>
+                        
+                        <div class="section-title">Key Topics:</div>
+                        <ul>
+                            <li><strong>Numbers:</strong> We use numbers to count things. Numbers can be whole numbers (1, 2, 3), or they can include fractions and decimals.</li>
+                            <li><strong>Shapes:</strong> Shapes are all around us! Some common shapes are circles, squares, triangles, and rectangles.</li>
+                            <li><strong>Addition and Subtraction:</strong> Addition means putting things together, and subtraction means taking things away. For example, 2 + 3 = 5 and 5 - 2 = 3.</li>
+                            <li><strong>Patterns:</strong> Patterns are repeating sequences. For example, a pattern of colors could be red, blue, red, blue, and so on.</li>
+                        </ul>
+
+                        <div class="section-title">Fun Facts:</div>
+                        <ul>
+                            <li>There are infinite numbers, which means you can always add or subtract to get new numbers!</li>
+                            <li>Some shapes have special names, like a hexagon which has 6 sides.</li>
+                            <li>Patterns can be found in nature, like the stripes on a zebra or the rings in a tree trunk.</li>
+                        </ul>
+                    </div>
+                `
+            }
+        };
+
+        function showNotes() {
+            const topicSelect = document.getElementById("topic-select");
+            const noteDisplay = document.getElementById("note-display");
+            const topicTitle = document.getElementById("topic-title");
+            const topicContent = document.getElementById("topic-content");
+
+            const selectedTopic = topicSelect.value;
+
+            if (selectedTopic && notes[selectedTopic]) {
+                topicTitle.textContent = notes[selectedTopic].title;
+                topicContent.innerHTML = notes[selectedTopic].content;
+                noteDisplay.style.display = 'block';
+            } else {
+                noteDisplay.style.display = 'none';
+            }
+        }
+    </script>
+
+</body>
+</html>

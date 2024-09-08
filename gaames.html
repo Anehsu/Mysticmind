@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colorful Science Trivia Game</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
+            color: #ffffff;
+            text-align: center;
+            padding: 50px;
+        }
+
+        #game-container {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+            display: inline-block;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        #question {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            display: block;
+            padding: 15px;
+            font-size: 1.2em;
+            margin: 15px auto;
+            width: 80%;
+            max-width: 300px;
+            background-color: #ffcc00;
+            color: #333333;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #ff9933;
+        }
+
+        #score {
+            font-size: 1.5em;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Mysticmind.school<h1>
+        <nav>
+            <ul>
+                <li><a href="https://mysticmind.mystrikingly.com/">Home</a></li>
+                <li><a href="ourproject.html">Back</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div id="game-container">
+        <h1>Science Trivia Game</h1>
+        <div id="question">Get ready for your science question!</div>
+        <button class="button" id="option1"></button>
+        <button class="button" id="option2"></button>
+        <button class="button" id="option3"></button>
+        <button class="button" id="option4"></button>
+        <div id="score">Score: 0</div>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: "1.What is the chemical symbol for oxygen?",
+                options: ["O", "O2", "Ox", "H2O"],
+                answer: "O"
+            },
+            {
+                question: "2.Which planet is closest to the Sun?",
+                options: ["Venus", "Earth", "Mercury", "Mars"],
+                answer: "Mercury"
+            },
+            {
+                question: "3.What is the hardest natural substance on Earth?",
+                options: ["Gold", "Iron", "Diamond", "Quartz"],
+                answer: "Diamond"
+            },
+            {
+                question: "4.What is the center of an atom called?",
+                options: ["Nucleus", "Electron", "Proton", "Neutron"],
+                answer: "Nucleus"
+            },
+            {
+                question: "5.What is the largest organ in the human body?",
+                options: ["Heart", "Liver", "Skin", "Lung"],
+                answer: "Skin"
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+
+        const questionDiv = document.getElementById("question");
+        const option1Button = document.getElementById("option1");
+        const option2Button = document.getElementById("option2");
+        const option3Button = document.getElementById("option3");
+        const option4Button = document.getElementById("option4");
+        const scoreDiv = document.getElementById("score");
+
+        function loadQuestion() {
+            let question = questions[currentQuestionIndex];
+            questionDiv.textContent = question.question;
+            option1Button.textContent = question.options[0];
+            option2Button.textContent = question.options[1];
+            option3Button.textContent = question.options[2];
+            option4Button.textContent = question.options[3];
+        }
+
+        function checkAnswer(answer) {
+            let correctAnswer = questions[currentQuestionIndex].answer;
+            if (answer === correctAnswer) {
+                score++;
+                alert("Correct!");
+            } else {
+                alert("Wrong! The correct answer was: " + correctAnswer);
+            }
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+                loadQuestion();
+            } else {
+                endGame();
+            }
+            scoreDiv.textContent = "Score: " + score;
+        }
+
+        function endGame() {
+            questionDiv.textContent = "Game over! You scored " + score + " points.";
+            option1Button.style.display = "none";
+            option2Button.style.display = "none";
+            option3Button.style.display = "none";
+            option4Button.style.display = "none";
+        }
+
+        option1Button.addEventListener("click", () => checkAnswer(option1Button.textContent));
+        option2Button.addEventListener("click", () => checkAnswer(option2Button.textContent));
+        option3Button.addEventListener("click", () => checkAnswer(option3Button.textContent));
+        option4Button.addEventListener("click", () => checkAnswer(option4Button.textContent));
+
+        loadQuestion();
+    </script>
+</body>
+</html>
